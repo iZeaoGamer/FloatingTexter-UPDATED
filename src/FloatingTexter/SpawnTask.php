@@ -2,9 +2,9 @@
 
 namespace FloatingTexter;
 
-use pocketmine\scheduler\PluginTask;
+use pocketmine\scheduler\Task;
 
-class SpawnTask extends PluginTask{
+class SpawnTask extends Task{
 
     /** @var FloatingText */
     public $floatingText;
@@ -13,10 +13,9 @@ class SpawnTask extends PluginTask{
     public function __construct(Main $plugin, FloatingText $floatingText){
         $this->plugin = $plugin;
         $this->floatingText = $floatingText;
-        parent::__construct($plugin);
     }
 
-    public function onRun(int $currentTick){
+    public function onRun(int $currentTick): void{
         $this->floatingText->spawnToAll();
     }
 }
