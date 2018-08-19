@@ -18,7 +18,7 @@ class Main extends PluginBase{
     public function onEnable(){
         $this->saveDefaultConfig();
         Entity::registerEntity(FloatingText::class, true);
-        $this->getServer()->getScheduler()->scheduleRepeatingTask(new RefreshTask($this), $this->getConfig()->get("time") * 20);
+        $this->getScheduler()->scheduleRepeatingTask(new RefreshTask($this), $this->getConfig()->get("time") * 20);
         $this->getLogger()->info(TextFormat::GREEN . "FloatingTexter by Fycarman enabled!");
     }
 
