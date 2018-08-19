@@ -2,18 +2,17 @@
 
 namespace FloatingTexter;
 
-use pocketmine\scheduler\PluginTask;
+use pocketmine\scheduler\Task;
 
-class RefreshTask extends PluginTask{
+class RefreshTask extends Task{
 
     private $plugin;
 
     public function __construct(Main $plugin){
         $this->plugin = $plugin;
-        parent::__construct($plugin);
     }
 
-    public function onRun(int $currentTick){
+    public function onRun(int $currentTick): void{
         foreach($this->plugin->getServer()->getLevels() as $level){
             foreach($level->getEntities() as $entity){
                 if($entity instanceof FloatingText){
